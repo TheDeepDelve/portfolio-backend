@@ -7,7 +7,13 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 // Middleware
-app.use(cors()); // Enable Cross-Origin Resource Sharing
+// Configure CORS to allow requests only from your portfolio website
+const corsOptions = {
+  origin: 'https://TheDeepDelve.github.io', // <-- Your live frontend URL here
+  optionsSuccessStatus: 200 
+};
+
+app.use(cors(corsOptions)); // Enable Cross-Origin Resource Sharing
 app.use(express.json()); // To parse JSON bodies
 
 // POST route to handle form submissions
